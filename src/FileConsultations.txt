@@ -1,0 +1,10 @@
+1,2961107125782,sore throat,nurofen,01/02/2016
+2,1961208123456,sore throat,vitamin c,03.03.2018
+3,2961107125782,sore throat,vitamin c+nurofen,02.02.2018
+4,1961208123456,sore throat,vitamin c+nurofen,02.03.2018
+5,2961107125782,sore throat,vitamin c+nurofen+aspiri,02.12.2017
+1,2961107125782,sore throat,nurofen,01/02/2016
+2,1961208123456,sore throat,vitamin c,03.03.2018
+3,2961107125782,sore throat,vitamin c+nurofen,02.02.2018
+4,1961208123456,sore throat,vitamin c+nurofen,02.03.2018
+6,2961107123456,sore throat,vitamin d+aspiri,02.03.2018
