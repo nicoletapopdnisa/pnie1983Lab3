@@ -100,14 +100,13 @@ public class DoctorController {
 			ConsultationList.add(c);
 			try {
 				rep.saveConsultationToFile(c);
+				Patient p = new Patient();
+				p = this.getPatientList().get(
+						this.getPatientBySSN(c.getPatientSSN()));
+				p.setConsNum(p.getConsNum() + 1);
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
-
-			Patient p = new Patient();
-			p = this.getPatientList().get(
-					this.getPatientBySSN(c.getPatientSSN()));
-			p.setConsNum(p.getConsNum() + 1);
 		}
 		else {
 			throw new ConsultationException("invalid arguments");

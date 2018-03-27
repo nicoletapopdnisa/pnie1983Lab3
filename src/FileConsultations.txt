@@ -8,3 +8,4 @@
 3,2961107125782,sore throat,vitamin c+nurofen,02.02.2018
 4,1961208123456,sore throat,vitamin c+nurofen,02.03.2018
 6,2961107123456,sore throat,vitamin d+aspiri,02.03.2018
+10,2961107125782,varicela,antibiotic+paracetamo,24.03.2018

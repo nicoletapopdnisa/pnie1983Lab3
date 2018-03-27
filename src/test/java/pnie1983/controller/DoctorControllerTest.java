@@ -1,9 +1,13 @@
 package pnie1983.controller;
 
 import org.junit.Test;
+import pnie1983.exceptions.ConsultationException;
 import pnie1983.exceptions.PatientException;
 import pnie1983.model.Patient;
 import pnie1983.repository.Repository;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import static junit.framework.Assert.assertEquals;
 import static junit.framework.TestCase.assertTrue;
@@ -104,5 +108,97 @@ public class DoctorControllerTest {
             thrown = e.getMessage();
         }
         assertEquals(thrown, "One of the required fields is empty!");
+    }
+
+    @Test
+    public void addConsultationIf_3_C1_False()
+    {
+        String consID=null;
+        String patientSSN="2961107125782";
+        String diag = "varicela";
+        List<String> meds = new ArrayList<java.lang.String>();
+        meds.add("antibiotic");
+        meds.add("paracetamol");
+        String date = "25.03.2018";
+
+        String thrown = "";
+
+        try {
+            ctrl.addConsultation(consID, patientSSN, diag, meds, date);
+        }catch(ConsultationException e)
+        {
+            thrown = e.getMessage();
+        }
+
+        assertEquals(thrown, "invalid arguments");
+    }
+
+    @Test
+    public void addConsultationIf_3_C1_True()
+    {
+        String consID="10";
+        String patientSSN="2961107125782";
+        String diag = "varicela";
+        List<String> meds = new ArrayList<java.lang.String>();
+        meds.add("antibiotic");
+        meds.add("paracetamol");
+        String date = "24.03.2018";
+
+        String thrown = "";
+
+        try {
+            ctrl.addConsultation(consID, patientSSN, diag, meds, date);
+        }catch(ConsultationException e)
+        {
+            thrown = e.getMessage();
+        }
+
+        assertEquals(thrown, "");
+    }
+
+    @Test
+    public void addConsultationIf_3_C2_False()
+    {
+        String consID="11";
+        String patientSSN=null;
+        String diag = "varicela";
+        List<String> meds = new ArrayList<java.lang.String>();
+        meds.add("antibiotic");
+        meds.add("paracetamol");
+        String date = "24.03.2018";
+
+        String thrown = "";
+
+        try {
+            ctrl.addConsultation(consID, patientSSN, diag, meds, date);
+        }catch(ConsultationException e)
+        {
+            thrown = e.getMessage();
+        }
+
+        assertEquals(thrown, "invalid arguments");
+    }
+
+    @Test
+    public void addConsultationIf_3_C2_True()
+    {
+        String consID="12";
+        String patientSSN="1961208123456";
+        String diag = "varicela";
+        List<String> meds = new ArrayList<java.lang.String>();
+        meds.add("antibiotic");
+        meds.add("paracetamol");
+        String date = "24.03.2018";
+
+        String thrown = "";
+
+        try {
+            ctrl.addConsultation(consID, patientSSN, diag, meds, date);
+        }catch(ConsultationException e)
+        {
+            thrown = e.getMessage();
+        }
+
+        assertEquals(thrown, "invalid arguments");
     }
 }
