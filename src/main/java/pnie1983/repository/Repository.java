@@ -156,6 +156,14 @@ public class Repository {
 		
 		return lp;	
 	}
+
+	public String getConsultationFileName() {
+		return consultations;
+	}
+
+	public void setConsultationFileName(String newConsultation) {
+		consultations = newConsultation;
+	}
 	
 	public void savePatientToFile(Patient p) throws IOException		// save to file
 	{
