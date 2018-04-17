@@ -426,4 +426,93 @@ public class DoctorControllerTest {
         assertEquals("", thrown);
     }
 
+    @Test
+    public void getPatientsWithDisease_BBTCase()
+    {
+        String disease = "sore throat";
+        String thrown = "";
+        try {
+            List<Patient> patients = ctrl.getPatientsWithDisease(disease);
+            assertEquals(patients.size(), 3);
+        } catch (PatientException e) {
+            thrown = e.getMessage();
+            if(disease == null)
+            {
+                assertEquals(thrown, "Null disease parameter provided");
+            }
+            else {
+                assertEquals(thrown, "Empty disease provided");
+            }
+        }
+    }
+
+    @Test
+    public void addPacient_BigBangInt()
+    {
+        String name = "diana";
+        String ssn = "2971106123456";
+        String address = "pitesti";
+        String thrown = "";
+
+        int nrBefore = rep.getPatientList().size();
+        try {
+            ctrl.addPatient(new Patient(name, ssn, address));
+            int nrAfter = rep.getPatientList().size();
+            assertEquals(nrBefore + 1, nrAfter);
+        } catch (PatientException e) {
+            thrown = e.getMessage();
+            assertEquals(thrown, "Null fields");
+        }
+
+    }
+
+    @Test
+    public void addConsultation_BigBangInt()
+    {
+        String consID = "22";
+        String patientSSN = "2971106123456";
+        String diag = "varicela";
+        List<String> meds = new ArrayList<java.lang.String>();
+        meds.add("antibiotic");
+        meds.add("paracetamol");
+        String date = "10.04.2018";
+        String thrown = "";
+
+        try {
+            ctrl.addConsultation(consID, patientSSN, diag, meds, date);
+        } catch (ConsultationException exc) {
+            thrown = exc.getMessage();
+        }
+
+        assertEquals("", thrown);
+    }
+
+    @Test
+    public void getPatientsWithDisease_BigBangInt()
+    {
+        String diseaseWanted = "varicela";
+        String thrown = "";
+        try {
+            List<Patient> patientsWithDisease = ctrl.getPatientsWithDisease(diseaseWanted);
+            assertEquals(patientsWithDisease.size(), 2);
+        } catch (PatientException e) {
+            thrown = e.getMessage();
+            if(diseaseWanted != null)
+            {
+                assertEquals(thrown, "Empty disease provided");
+            }
+            else {
+                assertEquals(thrown, "Null disease parameter provided");
+            }
+        }
+    }
+
+    @Test
+    public void BigBangIntegrationTest()
+    {
+        addPacient_BigBangInt();
+        addConsultation_BigBangInt();
+        getPatientsWithDisease_BigBangInt();
+    }
+
 }
