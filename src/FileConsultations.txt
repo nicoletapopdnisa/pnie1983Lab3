@@ -11,5 +11,3 @@
 20,2961107125782,durere cap + gat,antibiotic+paracetamol+aspirin plus ,01.04.2018
 21,2961107125782,durere cap + gat...,antibiotic+paracetamol+aspirin plus ,02.04.2018
 22,2971106123456,varicela,antibiotic+paracetamo,10.04.2018
-23,2771106123456,varicela,antibiotic+paracetamo,10.05.2018
-24,2921106123456,varicela,antibiotic+paracetamo,11.05.2018
