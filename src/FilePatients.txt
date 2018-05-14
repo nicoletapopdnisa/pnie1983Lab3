@@ -4,3 +4,6 @@ nicoletta,2961107234567,cluj
 nicoletta,2961107125782,cluj
 bogdan,1961208123456,cluj
 diana,2971106123456,pitesti
+mirabela,2871106123456,constanta
+ruxandra,2771106123456,arad
+liliana,2921106123456,craiova

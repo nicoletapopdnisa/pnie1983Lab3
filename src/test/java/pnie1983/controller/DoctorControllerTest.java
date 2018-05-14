@@ -515,4 +515,109 @@ public class DoctorControllerTest {
         getPatientsWithDisease_BigBangInt();
     }
 
+    @Test
+    public void addPacient_IncrementalInt()
+    {
+        String name = "mirabela";
+        String ssn = "2871106123456";
+        String address = "constanta";
+        String thrown = "";
+
+        int nrBefore = rep.getPatientList().size();
+        try {
+            ctrl.addPatient(new Patient(name, ssn, address));
+            int nrAfter = rep.getPatientList().size();
+            assertEquals(nrBefore + 1, nrAfter);
+        } catch (PatientException e) {
+            thrown = e.getMessage();
+            assertEquals(thrown, "Null fields");
+        }
+    }
+
+    @Test
+    public void addPacientAddConsultation_IncrementalInt()
+    {
+        String name = "ruxandra";
+        String ssn = "2771106123456";
+        String address = "arad";
+        String thrown = "";
+
+        String consID = "23";
+        String patientSSN = "2771106123456";
+        String diag = "varicela";
+        List<String> meds = new ArrayList<java.lang.String>();
+        meds.add("antibiotic");
+        meds.add("paracetamol");
+        String date = "10.05.2018";
+
+        int nrBefore = rep.getPatientList().size();
+        try {
+            ctrl.addPatient(new Patient(name, ssn, address));
+            int nrAfter = rep.getPatientList().size();
+            assertEquals(nrBefore + 1, nrAfter);
+        } catch (PatientException e) {
+            thrown = e.getMessage();
+            assertEquals(thrown, "Null fields");
+        }
+
+        try {
+            ctrl.addConsultation(consID, patientSSN, diag, meds, date);
+        } catch (ConsultationException exc) {
+            thrown = exc.getMessage();
+        }
+
+        assertEquals("", thrown);
+    }
+
+    @Test
+    public void addPacientAddConsultationFilterByDisease_IncrementalIntegrationTest()
+    {
+        String name = "liliana";
+        String ssn = "2921106123456";
+        String address = "craiova";
+        String thrown = "";
+
+        String consID = "24";
+        String patientSSN = "2921106123456";
+        String diag = "varicela";
+        List<String> meds = new ArrayList<java.lang.String>();
+        meds.add("antibiotic");
+        meds.add("paracetamol");
+        String date = "11.05.2018";
+
+        int nrBefore = rep.getPatientList().size();
+        try {
+            ctrl.addPatient(new Patient(name, ssn, address));
+            int nrAfter = rep.getPatientList().size();
+            assertEquals(nrBefore + 1, nrAfter);
+        } catch (PatientException e) {
+            thrown = e.getMessage();
+            assertEquals(thrown, "Null fields");
+        }
+
+        try {
+            ctrl.addConsultation(consID, patientSSN, diag, meds, date);
+        } catch (ConsultationException exc) {
+            thrown = exc.getMessage();
+        }
+
+        String diseaseWanted = "varicela";
+
+        try {
+            List<Patient> patientsWithDisease = ctrl.getPatientsWithDisease(diseaseWanted);
+            assertEquals(patientsWithDisease.size(), 4);
+        } catch (PatientException e) {
+            thrown = e.getMessage();
+            if(diseaseWanted != null)
+            {
+                assertEquals(thrown, "Empty disease provided");
+            }
+            else {
+                assertEquals(thrown, "Null disease parameter provided");
+            }
+        }
+
+        assertEquals("", thrown);
+    }
+
 }
