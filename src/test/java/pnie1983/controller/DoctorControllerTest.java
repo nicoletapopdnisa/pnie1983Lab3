@@ -20,7 +20,7 @@ public class DoctorControllerTest {
 
     @org.junit.Before
     public void setUp() throws Exception {
-        rep = new Repository("src\\FilePatients.txt", "src\\FileConsultations.txt");
+        rep = new Repository("FilePatients.txt", "FileConsultations.txt");
         ctrl = new DoctorController(rep);
     }
 
